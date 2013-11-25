@@ -10,5 +10,9 @@ class TestCase(unittest.TestCase):
         self.app = app.test_client()
 
 
+
+def visit_page(self):
+    return self.app.get('/')
+
 if __name__ == '__main__':
     unittest.main()
