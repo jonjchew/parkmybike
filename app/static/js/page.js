@@ -1,6 +1,7 @@
 var Page = {
 	initialize: function(){
 		Page.bindSearch()
+		Page.bindNoSanFran()
 	},
 	bindSearch: function(){
 		$( "#find" ).on( "click", function( event ) {
@@ -10,15 +11,26 @@ var Page = {
 			}
   			event.preventDefault();
   			$.post('/', data, function(response){
+  				global = response
         		var coordinatesArray = Page.getCoordinatesArray(response.results)
         		// Page.appendSpots(response.results)
         		GoogleMaps.addMarkers(coordinatesArray)
     		});
 		});
 	},
-	setCoordinatesForForm: function(latitude, longitude){
-		$('#latitude').val(latitude);
-      	$('#longitude').val(longitude);
+	bindNoSanFran: function(){
+		$( "#no-sf" ).on( "click", function( event ) {
+			var data = {
+				latitude: 37.78799,
+				longitude: -122.40744
+			}
+  			event.preventDefault();
+  			$.post('/', data, function(response){
+        		var coordinatesArray = Page.getCoordinatesArray(response.results)
+        		// Page.appendSpots(response.results)
+        		GoogleMaps.addMarkers(coordinatesArray)
+    		});
+		});
 	},
 	getCoordinatesArray: function(responseArray){
 		var coordinatesArray = []

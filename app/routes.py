@@ -6,14 +6,13 @@ from helpers import find_spots
 @app.route('/', methods = ['GET', 'POST'])
 def index():
 	if request.method == 'POST':
-		latitude = float(form.latitude.data)
-		longitude = float(form.longitude.data)
+		latitude = float(request.form['latitude'])
+		longitude = float(request.form['longitude'])
 		origin = [latitude, longitude]
 
 		response = requests.get("http://data.sfgov.org/resource/w969-5mn4.json?status=COMPLETE")
 		all_spots = json.loads(response.text)
 		close_spots = find_spots(origin, all_spots)
-
 		return jsonify(results = close_spots)
 	else:
 		return render_template("index.html")

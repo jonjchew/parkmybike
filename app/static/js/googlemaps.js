@@ -23,9 +23,6 @@ var GoogleMaps = {
           animation: google.maps.Animation.BOUNCE,
           icon: '/static/images/penguin.png'
         });
-
-        Page.setCoordinatesForForm(latitude, longitude)
-
         map.setCenter(GoogleMaps.origin);
       }, function() {
         handleNoGeolocation(true);
