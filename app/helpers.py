@@ -14,7 +14,7 @@ def filter_spots(origin, all_spots, max_distance):
 		latitude = float(parking_spot['coordinates']['longitude'])
 		potential_spot = [longitude, latitude]
 		distance = get_distance(origin, potential_spot)
-		if distance < max_distance and int(parking_spot['spaces']) > 0 and int(parking_spot['racks_installed']) > 0:
+		if valid_spot(parking_spot, distance, max_distance):
 			close_spots.append(
 				{
 					'name': parking_spot['location_name'],
@@ -24,6 +24,10 @@ def filter_spots(origin, all_spots, max_distance):
 					'longitude': longitude
 					})
 	return close_spots
+
+def valid_spot(parking_spot, distance, max_distance):
+	if distance < max_distance and int(parking_spot['spaces']) > 0 and int(parking_spot['racks_installed']) > 0:
+		return True
 
 def get_distance(origin, destination):
     lat1, lon1 = origin
