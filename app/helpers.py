@@ -17,6 +17,7 @@ def find_spots(origin, all_spots):
 					'longitude': longitude
 					})
 	close_spots = sort_by_distance(close_spots)
+	close_spots = uniqify(close_spots)
 	return close_spots
 
 def get_distance(origin, destination):
@@ -35,3 +36,9 @@ def get_distance(origin, destination):
 def sort_by_distance(close_spots):
 	sorted(close_spots, key=lambda k: k['distance'])
 
+def uniqify(array): 
+   checked = []
+   for value in array:
+       if value not in checked:
+           checked.append(value)
+   return checked
