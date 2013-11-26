@@ -19,7 +19,8 @@ var GoogleMaps = {
         GoogleMaps.origin = new google.maps.LatLng(latitude, longitude)
         var marker = new google.maps.Marker({
           map: map,
-          position: GoogleMaps.origin
+          position: GoogleMaps.origin,
+          animation: google.maps.Animation.BOUNCE
         });
 
         Page.setCoordinatesForForm(latitude, longitude)
@@ -33,17 +34,10 @@ var GoogleMaps = {
       handleNoGeolocation(false);
     }
   },
-  handleNoGeolocation: function(errorFlag){
-    if (errorFlag) {
-      var content = 'Error: The Geolocation service failed.';
-    } else {
-      var content = 'Error: Your browser doesn\'t support geolocation.';
-    }
-
+  handleNoGeolocation: function(){
     var options = {
       map: map,
       position: new google.maps.LatLng(60, 105),
-      content: content
     };
 
     var infowindow = new google.maps.InfoWindow(options);
@@ -60,13 +54,15 @@ var GoogleMaps = {
         var marker = new google.maps.Marker({
           position: pos,
           map: map,
-          title: coordinatesArray[i][2]
+          title: coordinatesArray[i][2],
+          icon: '/static/images/bike-icon.png'
         })
       }
       else{
         var marker = new google.maps.Marker({
           position: pos,
           map: map,
+          icon: '/static/images/bike-icon.png'
         });
       }
       google.maps.event.addListener(marker, 'click', function() {
