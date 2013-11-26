@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 	<div id='map-canvas'></div>
+	<form action="" method="post" name="locator">
+		{{form.hidden_tag()}}
+	    {{form.latitude}}
+	    {{form.longitude}}
+    <p><input type="submit" value="go"></p>
 {% endblock %}

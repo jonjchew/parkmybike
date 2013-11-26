@@ -4,4 +4,5 @@ from forms import Locator
 
 @app.route('/', methods = ['GET', 'POST'])
 def index():
-    return render_template("index.html")
+	form = Locator()
+	return render_template("index.html", form = form)
