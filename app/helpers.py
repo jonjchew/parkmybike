@@ -1,7 +1,7 @@
 import math
 
 def find_spots(origin, all_spots):
-	max_distance = 70 #mi. Change here to increase radius
+	max_distance = 80 #mi. Change here to increase radius
 	close_spots = filter_spots(origin, all_spots, max_distance)
 	close_spots = sort_by_distance(close_spots)
 	close_spots = uniqify(close_spots)

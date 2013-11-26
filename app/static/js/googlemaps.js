@@ -1,10 +1,14 @@
 var GoogleMaps = {
+  origin: null,
   initialize: function(){
     var mapOptions = {
     zoom: 15
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
     // Try HTML5 geolocation
     if(navigator.geolocation) {
@@ -12,17 +16,15 @@ var GoogleMaps = {
         var latitude = position.coords.latitude
         var longitude = position.coords.longitude
 
-        var pos = new google.maps.LatLng(latitude, longitude);
-
+        GoogleMaps.origin = new google.maps.LatLng(latitude, longitude)
         var marker = new google.maps.Marker({
           map: map,
-          position: pos,
-          content: 'Location found using HTML5.'
+          position: GoogleMaps.origin
         });
 
         Page.setCoordinatesForForm(latitude, longitude)
 
-        map.setCenter(pos);
+        map.setCenter(GoogleMaps.origin);
       }, function() {
         handleNoGeolocation(true);
       });
@@ -54,10 +56,35 @@ var GoogleMaps = {
       var latitude = coordinatesArray[i][0]
       var longitude = coordinatesArray[i][1]
       var pos = new google.maps.LatLng(latitude, longitude)
-      var marker = new google.maps.Marker({
-        position: pos,
-        map: map
+      if(coordinatesArray[i][2]!='_undetermined'){
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: coordinatesArray[i][2]
+        })
+      }
+      else{
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+        });
+      }
+      google.maps.event.addListener(marker, 'click', function() {
+        GoogleMaps.calcRoute(GoogleMaps.origin, pos);
       });
     }
+  },
+  calcRoute: function(start, end){
+    var directionsService = new google.maps.DirectionsService();
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode.WALKING
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
   }
 }

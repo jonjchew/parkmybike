@@ -8,7 +8,7 @@ var Page = {
   			var data = $(this).serialize()
   			$.post('/', data, function(response){
         		var coordinatesArray = Page.getCoordinatesArray(response.results)
-        		Page.appendSpots(response.results)
+        		// Page.appendSpots(response.results)
         		GoogleMaps.addMarkers(coordinatesArray)
     		});
 		});
@@ -20,7 +20,7 @@ var Page = {
 	getCoordinatesArray: function(responseArray){
 		var coordinatesArray = []
 		for(var i = 0; i < responseArray.length; i++){
-			coordinatesArray.push([responseArray[i]['latitude'], responseArray[i]['longitude']])
+			coordinatesArray.push([responseArray[i]['latitude'], responseArray[i]['longitude'], responseArray[i]['name']])
 		}	
 		return coordinatesArray
 	},
