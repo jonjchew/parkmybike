@@ -17,8 +17,7 @@ var Page = {
   				}
   				else{
   					Page.hideModal()
-	        		var coordinatesArray = Page.getCoordinatesArray(response.results)
-	        		GoogleMaps.addMarkers(coordinatesArray)
+	        		GoogleMaps.addMarkers(response.results)
   				}
     		});
 		});
@@ -34,8 +33,7 @@ var Page = {
   			$.post('/', data, function(response){
   				Page.hideModal()
   				GoogleMaps.recenterMap(data)
-        		var coordinatesArray = Page.getCoordinatesArray(response.results)
-        		GoogleMaps.addMarkers(coordinatesArray)
+        		GoogleMaps.addMarkers(response.results)
     		});
 		});
 	},

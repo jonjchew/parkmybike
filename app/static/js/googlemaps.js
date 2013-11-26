@@ -41,18 +41,18 @@ var GoogleMaps = {
     var infowindow = new google.maps.InfoWindow(options);
     map.setCenter(options.position);
   },
-  addMarkers: function(coordinatesArray){
+  addMarkers: function(responseArray){
     markers = []
-    for (var i = 0; i < coordinatesArray.length; i++) 
+    for (var i = 0; i < responseArray.length; i++) 
     {
-      var latitude = coordinatesArray[i][0]
-      var longitude = coordinatesArray[i][1]
+      var latitude = responseArray[i]['latitude']
+      var longitude = responseArray[i]['longitude']
       var pos = new google.maps.LatLng(latitude, longitude)
-      if(coordinatesArray[i][2]!='_undetermined'){
+      if(responseArray[i]['name']!='_undetermined'){
         var marker = new google.maps.Marker({
           position: pos,
           map: map,
-          title: coordinatesArray[i][2],
+          title: responseArray[i][2],
           icon: '/static/images/bike-icon.png',
           zIndex: 200
         })
