@@ -1,3 +1,6 @@
+body {
+	font-family: 'Annie Use Your Telescope', cursive;
+}
 #container {
 	width: 960px;
 	margin: 0 auto;
