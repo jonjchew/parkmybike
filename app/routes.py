@@ -11,6 +11,7 @@ def index():
 		latitude = float(form.latitude.data)
 		longitude = float(form.longitude.data)
 		origin = [latitude, longitude]
+		
 		response = requests.get("http://data.sfgov.org/resource/w969-5mn4.json?status=COMPLETE")
 		all_spots = json.loads(response.text)
 		close_spots = find_spots(origin, all_spots)

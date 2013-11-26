@@ -15,7 +15,7 @@ function initialize() {
 
       var pos = new google.maps.LatLng(latitude, longitude);
 
-      var infowindow = new google.maps.InfoWindow({
+      var marker = new google.maps.Marker({
         map: map,
         position: pos,
         content: 'Location found using HTML5.'
