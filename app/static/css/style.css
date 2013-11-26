@@ -1,10 +1,20 @@
+#container {
+	width: 960px;
+	margin: 0 auto;
+}
+#left-column {
+	float: left;
+	width: 600px;
+}
 #map-canvas {
 	height: 500px;
-	width: 50%;
+	width: 100%;
+	float: left;
+}
+#search {
 	float: left;
 }
 #directions-panel {
 	float:left;
-	width: 50%;
-	height: 500px;
+	width: 360px;
 }

@@ -4,11 +4,16 @@
     <link href="/static/css/style.css" rel="stylesheet">
    </head>
    <body>
-   	{% block content %}{% endblock %}
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-   	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-   	<script src="/static/js/page.js"></script>
-    <script src="/static/js/googlemaps.js"></script>
-    <script src="/static/js/main.js"></script>
+    <div id="container">
+      <div id="title">
+        <img src='/static/images/ineedtoparkmybike960.png'>
+      </div>
+     	{% block content %}{% endblock %}
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+     	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+     	<script src="/static/js/page.js"></script>
+      <script src="/static/js/googlemaps.js"></script>
+      <script src="/static/js/main.js"></script>
+    </div>
    </body>
  </html>
