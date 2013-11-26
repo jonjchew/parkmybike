@@ -6,8 +6,8 @@ var Page = {
 		$( "form" ).on( "submit", function( event ) {
   			event.preventDefault();
   			var data = $(this).serialize()
-  			$.post(url, data, function(response){
-        		;
+  			$.post('/', data, function(response){
+        		console.log(response);
     		});
 		});
 	},
