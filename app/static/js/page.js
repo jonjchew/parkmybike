@@ -8,6 +8,7 @@ var Page = {
   			var data = $(this).serialize()
   			$.post('/', data, function(response){
         		var coordinatesArray = Page.getCoordinatesArray(response.results)
+        		Page.appendSpots(response.results)
         		GoogleMaps.addMarkers(coordinatesArray)
     		});
 		});
@@ -22,5 +23,10 @@ var Page = {
 			coordinatesArray.push([responseArray[i]['latitude'], responseArray[i]['longitude']])
 		}	
 		return coordinatesArray
+	},
+	appendSpots: function(spotsArray){
+		for(var i = 0; i < spotsArray.length; i++){
+			$('#spot-list').append("<li>" +	 spotsArray[i]['name'] +  "," + spotsArray[i]['address'] + " </li>")
+		}
 	}
 }

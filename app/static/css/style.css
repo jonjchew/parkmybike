@@ -1,3 +1,10 @@
 #map-canvas {
 	height: 500px;
+	width: 50%;
+	float: left;
+}
+#right-column {
+	float:left;
+	width: 50%;
+	height: 500px;
 }
