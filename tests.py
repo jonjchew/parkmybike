@@ -12,7 +12,6 @@ class TestCase(unittest.TestCase):
 
     def test_locate_user_on_load(self):
         rv = self.app.get('/')
-        print rv
         assert 'Hello, World!' in rv.data
 
 if __name__ == '__main__':
