@@ -10,6 +10,8 @@ def index():
 		latitude = float(form.latitude.data)
 		longitude = float(form.longitude.data)
 		response = requests.get("http://data.sfgov.org/resource/w969-5mn4.json?status=COMPLETE")
+		spots = json.loads(response.text)
+
 		return render_template("index.html", 
 			response = response,
 			form = form)
