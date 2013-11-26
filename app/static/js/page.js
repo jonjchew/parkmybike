@@ -21,11 +21,12 @@ var Page = {
 	bindNoSanFran: function(){
 		$( "#no-sf" ).on( "click", function( event ) {
 			var data = {
-				latitude: 37.78799,
-				longitude: -122.40744
+				latitude: 37.78751,
+				longitude: -122.40737
 			}
   			event.preventDefault();
   			$.post('/', data, function(response){
+  				GoogleMaps.recenterMap(data)
         		var coordinatesArray = Page.getCoordinatesArray(response.results)
         		// Page.appendSpots(response.results)
         		GoogleMaps.addMarkers(coordinatesArray)

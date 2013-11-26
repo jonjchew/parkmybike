@@ -2,7 +2,7 @@ var GoogleMaps = {
   origin: null,
   initialize: function(){
     var mapOptions = {
-    zoom: 15
+    zoom: 16
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
@@ -20,7 +20,6 @@ var GoogleMaps = {
         var marker = new google.maps.Marker({
           map: map,
           position: GoogleMaps.origin,
-          animation: google.maps.Animation.BOUNCE,
           icon: '/static/images/penguin.png'
         });
         map.setCenter(GoogleMaps.origin);
@@ -63,8 +62,10 @@ var GoogleMaps = {
           icon: '/static/images/bike-icon.png'
         });
       }
+
       google.maps.event.addListener(marker, 'click', function() {
-        GoogleMaps.calcRoute(GoogleMaps.origin, pos);
+        var destination = this.getPosition()
+        GoogleMaps.calcRoute(GoogleMaps.origin, destination);
       });
     }
   },
@@ -80,5 +81,15 @@ var GoogleMaps = {
         directionsDisplay.setDirections(response);
       }
     });
+  },
+  recenterMap: function(data){
+    var origin = new google.maps.LatLng(data.latitude,data.longitude)
+    GoogleMaps.origin = origin
+    var marker = new google.maps.Marker({
+      map: map,
+      position: GoogleMaps.origin,
+      icon: '/static/images/penguin.png'
+    });
+    map.setCenter(origin)
   }
 }
