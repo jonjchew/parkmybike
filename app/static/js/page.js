@@ -11,7 +11,6 @@ var Page = {
 			}
   			event.preventDefault();
   			$.post('/', data, function(response){
-  				global = response
         		var coordinatesArray = Page.getCoordinatesArray(response.results)
         		GoogleMaps.addMarkers(coordinatesArray)
     		});
