@@ -16,6 +16,7 @@ def find_spots(origin, all_spots):
 					'latitude': latitude,
 					'longitude': longitude
 					})
+	close_spots = sort_by_distance(close_spots)
 	return close_spots
 
 def get_distance(origin, destination):
@@ -29,3 +30,8 @@ def get_distance(origin, destination):
         * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
     d = radius * c
+    return d
+
+def sort_by_distance(close_spots):
+	sorted(close_spots, key=lambda k: k['distance'])
+
