@@ -1,11 +1,14 @@
 var Page = {
 	initialize: function(){
-		Page.bindFormAJAX()
+		Page.bindSearch()
 	},
-	bindFormAJAX: function(){
-		$( "form" ).on( "submit", function( event ) {
+	bindSearch: function(){
+		$( "#find" ).on( "click", function( event ) {
+			var data = {
+				latitude: GoogleMaps.origin.ob,
+				longitude: GoogleMaps.origin.pb
+			}
   			event.preventDefault();
-  			var data = $(this).serialize()
   			$.post('/', data, function(response){
         		var coordinatesArray = Page.getCoordinatesArray(response.results)
         		// Page.appendSpots(response.results)

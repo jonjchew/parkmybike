@@ -2,12 +2,7 @@
 {% block content %}
 	<div id='map-canvas'></div>
 	<div id='directions-panel'>
-	<form action="" method="post" name="locator">
-		{{form.hidden_tag()}}
-	    {{form.latitude}}
-	    {{form.longitude}}
-    	<input type="submit" value="go">
-	</form>
+    	<input type="submit" id="find" value="Find spots">
 		<ul id='spot-list'>
 		</ul>
 	</div>
