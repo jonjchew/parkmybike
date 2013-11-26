@@ -1,8 +1,14 @@
 import math
 
 def find_spots(origin, all_spots):
-	close_spots = []
 	max_distance = 70 #km. Change here to increase radius
+	close_spots = filter_spots(origin, all_spots, max_distance)
+	close_spots = sort_by_distance(close_spots)
+	close_spots = uniqify(close_spots)
+	return close_spots
+
+def filter_spots(origin, all_spots, max_distance):
+	close_spots = []
 	for parking_spot in all_spots:
 		longitude = float(parking_spot['coordinates']['latitude'])
 		latitude = float(parking_spot['coordinates']['longitude'])
@@ -17,11 +23,7 @@ def find_spots(origin, all_spots):
 					'latitude': latitude,
 					'longitude': longitude
 					})
-	close_spots = sort_by_distance(close_spots)
-	close_spots = uniqify(close_spots)
 	return close_spots
-
-
 
 def get_distance(origin, destination):
     lat1, lon1 = origin
