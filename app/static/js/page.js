@@ -37,19 +37,12 @@ var Page = {
     		});
 		});
 	},
-	getCoordinatesArray: function(responseArray){
-		var coordinatesArray = []
-		for(var i = 0; i < responseArray.length; i++){
-			coordinatesArray.push([responseArray[i]['latitude'], responseArray[i]['longitude'], responseArray[i]['name']])
-		}	
-		return coordinatesArray
-	},
 	showLoad: function(){
 		$('#modal').html("Finding spots...<p><img src='static/images/bikeload.gif' id='load-img'></p>")
 		$('#modal').addClass('show')
 	},
 	showNoSf: function(){
-		$('#modal').html("We can't seem to find any spots near you. Are you not in San Francisco? <p><button type='button' id='no-sf' class='btn btn-default'>No, but show me Union Square!</button></p>")
+		$('#modal').html("We can't seem to find any spots near you. Are you in San Francisco? <p><button type='button' id='no-sf' class='btn btn-default'>No, but show me Union Square!</button></p>")
 		$('#modal').addClass('show')
 	},
 	hideModal: function(){

@@ -1,6 +1,12 @@
 body {
 	font-family: 'Annie Use Your Telescope', cursive;
 }
+img.tablet,
+img.kindle,
+img.phone-wide,
+img.phone {
+	display: none;
+}
 #container {
 	width: 960px;
 	margin: 0 auto;
@@ -21,7 +27,7 @@ body {
 	float:left;
 	width: 360px;
 }
-#modal{
+#modal {
 	display: none;
 	position: fixed;
 	width: 400px;
@@ -36,10 +42,10 @@ body {
 	font-size: 30px;
 	padding: 15px;
 }
-#modal.show{
+#modal.show {
 	display: block;
 }
-#load-img{
+#load-img {
 	margin: 0 auto;
 	top: 50%;
 }
