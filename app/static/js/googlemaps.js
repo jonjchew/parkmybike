@@ -20,7 +20,8 @@ var GoogleMaps = {
         var marker = new google.maps.Marker({
           map: map,
           position: GoogleMaps.origin,
-          animation: google.maps.Animation.BOUNCE
+          animation: google.maps.Animation.BOUNCE,
+          icon: '/static/images/penguin.png'
         });
 
         Page.setCoordinatesForForm(latitude, longitude)
