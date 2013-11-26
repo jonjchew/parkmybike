@@ -1,6 +1,12 @@
 var Page = {
+	init: function(){
+		Page.bindSearchButton()
+	},
+	bindSearchButton: function(){
+
+	},
 	setCoordinatesForForm: function(latitude, longitude){
-		document.getElementById('latitude').value = latitude;
-      	document.getElementById('longitude').value = longitude;
+		$('#latitude').val(latitude);
+      	$('#longitude').val(longitude);
 	}
 }
