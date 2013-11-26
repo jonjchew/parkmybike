@@ -1,7 +1,6 @@
 var Page = {
 	initialize: function(){
 		Page.bindSearch()
-		Page.bindNoSanFran()
 	},
 	bindSearch: function(){
 		$( "#find" ).on( "click", function( event ) {
@@ -10,20 +9,30 @@ var Page = {
 				longitude: GoogleMaps.origin.pb
 			}
   			event.preventDefault();
+  			Page.showLoad()
   			$.post('/', data, function(response){
-        		var coordinatesArray = Page.getCoordinatesArray(response.results)
-        		GoogleMaps.addMarkers(coordinatesArray)
+  				if(response.results.length === 0){
+  					Page.showNoSf()
+  					Page.bindNoSanFran()
+  				}
+  				else{
+  					Page.hideModal()
+	        		var coordinatesArray = Page.getCoordinatesArray(response.results)
+	        		GoogleMaps.addMarkers(coordinatesArray)
+  				}
     		});
 		});
 	},
 	bindNoSanFran: function(){
 		$( "#no-sf" ).on( "click", function( event ) {
+  			Page.showLoad()
 			var data = {
 				latitude: 37.78751,
 				longitude: -122.40737
 			}
   			event.preventDefault();
   			$.post('/', data, function(response){
+  				Page.hideModal()
   				GoogleMaps.recenterMap(data)
         		var coordinatesArray = Page.getCoordinatesArray(response.results)
         		GoogleMaps.addMarkers(coordinatesArray)
@@ -36,5 +45,16 @@ var Page = {
 			coordinatesArray.push([responseArray[i]['latitude'], responseArray[i]['longitude'], responseArray[i]['name']])
 		}	
 		return coordinatesArray
+	},
+	showLoad: function(){
+		$('#modal').html("Finding spots...<p><img src='static/images/bikeload.gif' id='load-img'></p>")
+		$('#modal').addClass('show')
+	},
+	showNoSf: function(){
+		$('#modal').html("We can't seem to find any spots near you. Are you not in San Francisco? <p><button type='button' id='no-sf' class='btn btn-default'>No, but show me Union Square!</button></p>")
+		$('#modal').addClass('show')
+	},
+	hideModal: function(){
+		$('#modal').removeClass('show')
 	}
 }

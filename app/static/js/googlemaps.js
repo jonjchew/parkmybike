@@ -21,7 +21,7 @@ var GoogleMaps = {
           map: map,
           position: GoogleMaps.origin,
           icon: '/static/images/penguin.png',
-          zIndex: 200
+          zIndex: 202
         });
         map.setCenter(GoogleMaps.origin);
       }, function() {
