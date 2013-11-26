@@ -1,9 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 	<div id='map-canvas'></div>
-	{% if spots_array %}
-		{{spots_array}}
-	{% endif %}
+
 	<form action="" method="post" name="locator">
 		{{form.hidden_tag()}}
 	    {{form.latitude}}
