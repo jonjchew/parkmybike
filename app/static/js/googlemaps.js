@@ -1,53 +1,99 @@
-var map;
+var GoogleMaps = {
+  origin: null,
+  initialize: function(){
+    var mapOptions = {
+    zoom: 16
+    };
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-function initialize() {
-  var mapOptions = {
-    zoom: 15
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
+    // Try HTML5 geolocation
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude = position.coords.latitude
+        var longitude = position.coords.longitude
 
-  // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var latitude = position.coords.latitude
-      var longitude = position.coords.longitude
-
-      var pos = new google.maps.LatLng(latitude, longitude);
-
-      var marker = new google.maps.Marker({
-        map: map,
-        position: pos,
-        content: 'Location found using HTML5.'
+        GoogleMaps.origin = new google.maps.LatLng(latitude, longitude)
+        var marker = new google.maps.Marker({
+          map: map,
+          position: GoogleMaps.origin,
+          icon: '/static/images/penguin.png',
+          zIndex: 200
+        });
+        map.setCenter(GoogleMaps.origin);
+      }, function() {
+        handleNoGeolocation(true);
       });
+    } else {
+      // Browser doesn't support Geolocation
+      handleNoGeolocation(false);
+    }
+  },
+  handleNoGeolocation: function(){
+    var options = {
+      map: map,
+      position: new google.maps.LatLng(60, 105),
+    };
 
-      Page.setCoordinatesForForm(latitude, longitude)
+    var infowindow = new google.maps.InfoWindow(options);
+    map.setCenter(options.position);
+  },
+  addMarkers: function(coordinatesArray){
+    markers = []
+    for (var i = 0; i < coordinatesArray.length; i++) 
+    {
+      var latitude = coordinatesArray[i][0]
+      var longitude = coordinatesArray[i][1]
+      var pos = new google.maps.LatLng(latitude, longitude)
+      if(coordinatesArray[i][2]!='_undetermined'){
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          title: coordinatesArray[i][2],
+          icon: '/static/images/bike-icon.png',
+          zIndex: 200
+        })
+      }
+      else{
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          icon: '/static/images/bike-icon.png',
+          zIndex: 200
+        });
+      }
 
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
+      google.maps.event.addListener(marker, 'click', function() {
+        var destination = this.getPosition()
+        GoogleMaps.calcRoute(GoogleMaps.origin, destination);
+      });
+    }
+  },
+  calcRoute: function(start, end){
+    var directionsService = new google.maps.DirectionsService();
+    var request = {
+      origin: start,
+      destination: end,
+      travelMode: google.maps.TravelMode.WALKING
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
     });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
+  },
+  recenterMap: function(data){
+    var origin = new google.maps.LatLng(data.latitude,data.longitude)
+    GoogleMaps.origin = origin
+    var marker = new google.maps.Marker({
+      map: map,
+      position: GoogleMaps.origin,
+      icon: '/static/images/penguin.png',
+      zIndex: 200
+    });
+    map.setCenter(origin)
   }
 }
-
-function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    var content = 'Error: The Geolocation service failed.';
-  } else {
-    var content = 'Error: Your browser doesn\'t support geolocation.';
-  }
-
-  var options = {
-    map: map,
-    position: new google.maps.LatLng(60, 105),
-    content: content
-  };
-
-  var infowindow = new google.maps.InfoWindow(options);
-  map.setCenter(options.position);
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
