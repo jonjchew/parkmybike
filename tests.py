@@ -10,9 +10,10 @@ class TestCase(unittest.TestCase):
         self.app = app.test_client()
 
 
-
-def visit_page(self):
-    return self.app.get('/')
+    def test_locate_user_on_load(self):
+        rv = self.app.get('/')
+        print rv
+        assert 'Hello, World!' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
