@@ -20,7 +20,8 @@ var GoogleMaps = {
         var marker = new google.maps.Marker({
           map: map,
           position: GoogleMaps.origin,
-          icon: '/static/images/penguin.png'
+          icon: '/static/images/penguin.png',
+          zIndex: 200
         });
         map.setCenter(GoogleMaps.origin);
       }, function() {
@@ -52,14 +53,16 @@ var GoogleMaps = {
           position: pos,
           map: map,
           title: coordinatesArray[i][2],
-          icon: '/static/images/bike-icon.png'
+          icon: '/static/images/bike-icon.png',
+          zIndex: 200
         })
       }
       else{
         var marker = new google.maps.Marker({
           position: pos,
           map: map,
-          icon: '/static/images/bike-icon.png'
+          icon: '/static/images/bike-icon.png',
+          zIndex: 200
         });
       }
 
@@ -88,7 +91,8 @@ var GoogleMaps = {
     var marker = new google.maps.Marker({
       map: map,
       position: GoogleMaps.origin,
-      icon: '/static/images/penguin.png'
+      icon: '/static/images/penguin.png',
+      zIndex: 200
     });
     map.setCenter(origin)
   }
