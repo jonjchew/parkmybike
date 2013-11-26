@@ -1,9 +1,15 @@
 var Page = {
-	init: function(){
-		Page.bindSearchButton()
+	initialize: function(){
+		Page.bindFormAJAX()
 	},
-	bindSearchButton: function(){
-
+	bindFormAJAX: function(){
+		$( "form" ).on( "submit", function( event ) {
+  			event.preventDefault();
+  			var data = $(this).serialize()
+  			$.post(url, data, function(response){
+        		;
+    		});
+		});
 	},
 	setCoordinatesForForm: function(latitude, longitude){
 		$('#latitude').val(latitude);
