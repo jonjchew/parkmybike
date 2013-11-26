@@ -10,9 +10,9 @@ def find_spots(origin, all_spots):
 def filter_spots(origin, all_spots, max_distance):
 	close_spots = []
 	for parking_spot in all_spots:
-		longitude = float(parking_spot['coordinates']['latitude'])
-		latitude = float(parking_spot['coordinates']['longitude'])
-		potential_spot = [longitude, latitude]
+		latitude = float(parking_spot['coordinates']['latitude'])
+		longitude = float(parking_spot['coordinates']['longitude'])
+		potential_spot = [latitude, longitude]
 		distance = get_distance(origin, potential_spot)
 		if valid_spot(parking_spot, distance, max_distance):
 			close_spots.append(
