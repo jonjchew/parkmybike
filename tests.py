@@ -18,8 +18,9 @@ class TestCase(unittest.TestCase):
 
     def test_helpers_find_spots(self):
     	potential_spots = test_helper.example_response
+    	origin = [0,0]
     	close_spots = helpers.find_spots(origin,potential_spots)
-    	assert close_spots.length == 1
+    	assert len(close_spots) == 1
 
 
 if __name__ == '__main__':
