@@ -3,7 +3,6 @@ import math
 def find_spots(origin, all_spots):
 	max_distance = 0.5 #mi. Change here to increase radius
 	close_spots = filter_spots(origin, all_spots, max_distance)
-	close_spots = sort_by_distance(close_spots)
 	close_spots = uniqify(close_spots)
 	return close_spots
 
@@ -41,10 +40,6 @@ def get_distance(origin, destination):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
     d = radius * c
     return d
-
-def sort_by_distance(close_spots):
-	sorted(close_spots, key=lambda k: k['distance'])
-	return close_spots
 
 def uniqify(array): 
    checked = []

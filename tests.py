@@ -46,8 +46,6 @@ class TestCase(unittest.TestCase):
     	destination = [0,1]
     	assert helpers.get_distance(origin, destination) == 69.17032342836163
 
-    def test_sort_by_distance(self):
-    	assert helpers.sort_by_distance(test_helpers.close_spots) == test_helpers.sorted_array
 
 if __name__ == '__main__':
     unittest.main()
