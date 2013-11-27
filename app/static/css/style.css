@@ -40,7 +40,7 @@ img.phone {
 	height: 200px;
 	top: 50%;
 	left: 50%;
-	z-index: 500;
+	z-index: -1;
 	margin-top: -100px;
 	margin-left: -200px;
 	background-color: rgba(255,255,255,0.85);
@@ -52,6 +52,7 @@ img.phone {
    -webkit-transition: .4s ease-in-out;
 }
 #modal.show {
+	z-index: 500;
 	opacity: 1;
 }
 #load-img {
