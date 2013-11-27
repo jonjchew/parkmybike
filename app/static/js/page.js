@@ -3,12 +3,11 @@ var Page = {
 		Page.bindSearch()
 	},
 	bindSearch: function(){
-		$( "#find" ).on( "click", function( event ) {
+		$( "#find" ).on( "click", function() {
 			var data = {
 				latitude: GoogleMaps.origin.ob,
 				longitude: GoogleMaps.origin.pb
 			}
-  			event.preventDefault();
   			Page.showLoad()
   			$.post('/', data, function(response){
   				if(response.results.length === 0){
@@ -23,13 +22,12 @@ var Page = {
 		});
 	},
 	bindNoSanFran: function(){
-		$( "#no-sf" ).on( "click", function( event ) {
+		$( "#no-sf" ).on( "click", function() {
   			Page.showLoad()
 			var data = {
 				latitude: 37.78751,
 				longitude: -122.40737
 			}
-  			event.preventDefault();
   			$.post('/', data, function(response){
   				Page.hideModal()
   				GoogleMaps.recenterMap(data)
