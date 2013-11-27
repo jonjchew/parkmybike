@@ -17,8 +17,6 @@ def filter_spots(origin, all_spots, max_distance):
 			close_spots.append(
 				{
 					'name': parking_spot['location_name'],
-					'address': parking_spot['yr_inst'],
-					'distance': distance,
 					'latitude': latitude,
 					'longitude': longitude
 					})
