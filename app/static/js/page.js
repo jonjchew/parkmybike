@@ -48,7 +48,7 @@ var Page = {
 	showNoGeo: function(){
 		$('#modal').html("<p>Please make sure your browser supports GPS location.</p>")
 		$('#modal').addClass('show')
-	}
+	},
 	hideModal: function(){
 		$('#modal').removeClass('show')
 	}
