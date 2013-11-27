@@ -29,6 +29,11 @@ class TestCase(unittest.TestCase):
     	close_spots = helpers.filter_spots(origin,all_spots,max_distance)
     	assert len(close_spots) == 1
 
+    def test_helpers_valid_spot(self):
+    	max_distance = 0.5
+    	valid_distance = 0.4
+    	valid_spot = test_helper.valid_spot
+    	assert helpers.valid_spot(valid_spot) == True
 
 if __name__ == '__main__':
     unittest.main()
