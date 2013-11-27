@@ -33,7 +33,14 @@ class TestCase(unittest.TestCase):
     	max_distance = 0.5
     	valid_distance = 0.4
     	valid_spot = test_helper.valid_spot
-    	assert helpers.valid_spot(valid_spot) == True
+    	invalid_distance = 0.6
+    	invalid_spot = test_helper.invalid_spot
+    	invalid_spot2 = test_helper.invalid_spot2
+    	assert helpers.valid_spot(valid_spot, valid_distance, max_distance) == True
+    	assert helpers.valid_spot(valid_spot, invalid_distance, max_distance) == None
+    	assert helpers.valid_spot(invalid_spot, valid_distance, max_distance) == None
+    	assert helpers.valid_spot(invalid_spot2, valid_distance, max_distance) == None
+
 
 if __name__ == '__main__':
     unittest.main()
