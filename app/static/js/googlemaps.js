@@ -67,6 +67,7 @@ var GoogleMaps = {
       }
 
       google.maps.event.addListener(marker, 'click', function() {
+        Page.removeInstructions()
         var destination = this.getPosition()
         GoogleMaps.calcRoute(GoogleMaps.origin, destination);
       });

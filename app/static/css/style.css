@@ -27,6 +27,12 @@ img.phone {
 	float:left;
 	width: 360px;
 }
+#instructions{
+	text-align: center;
+	margin:  0 auto;
+	margin-top: 220px;
+	font-size: 25px;
+}
 #modal {
 	display: none;
 	position: fixed;

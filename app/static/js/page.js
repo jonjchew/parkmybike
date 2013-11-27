@@ -51,5 +51,8 @@ var Page = {
 	},
 	hideModal: function(){
 		$('#modal').removeClass('show')
+	},
+	removeInstructions: function(){
+		$('#instructions').remove()
 	}
 }
