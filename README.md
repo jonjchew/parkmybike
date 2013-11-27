@@ -17,7 +17,7 @@ After the server initializes, enter the following URL in your browser:
 
 To run the Python unit tests:
 
-    $ chmod a+x run.py
+    $ chmod a+x tests.py
     $ ./tests.py
 
 
