@@ -6,7 +6,7 @@ var GoogleMaps = {
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
-    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
