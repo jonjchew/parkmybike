@@ -66,6 +66,11 @@ var GoogleMaps = {
         });
       }
 
+      google.maps.event.addListener(marker, 'touch', function() {
+        Page.removeInstructions()
+        var destination = this.getPosition()
+        GoogleMaps.calcRoute(GoogleMaps.origin, destination);
+      });
       google.maps.event.addListener(marker, 'mousedown', function() {
         Page.removeInstructions()
         var destination = this.getPosition()
