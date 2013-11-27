@@ -44,7 +44,7 @@ class TestCase(unittest.TestCase):
     def test_helpers_get_distance(self):
     	origin = [0,0]
     	destination = [0,1]
-    	assert helpers.get_distance(origin, destination) == 69.132
+    	assert helpers.get_distance(origin, destination) == 69.17032342836163
 
 if __name__ == '__main__':
     unittest.main()

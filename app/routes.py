@@ -1,7 +1,7 @@
 import requests, json
 from flask import render_template, request, jsonify
 from app import app
-from helpers import find_spots
+from helpers import find_spots,get_distance
 
 @app.route('/', methods = ['GET', 'POST'])
 def index():
