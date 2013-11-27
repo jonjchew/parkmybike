@@ -41,9 +41,9 @@ def get_distance(origin, destination):
     d = radius * c
     return d
 
-def uniqify(array): 
+def uniqify(unsorted_list): 
    checked = []
-   for value in array:
+   for value in unsorted_list:
        if value not in checked:
            checked.append(value)
    return checked
