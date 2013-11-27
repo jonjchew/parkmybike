@@ -20,9 +20,11 @@ class TestCase(unittest.TestCase):
 
     def test_post_index(self):
     	rv = self.app.post('/', data = dict(
-	        
+	        latitude = 0.1,
+	        longitude = 2.0
     		))
     	assert "results" in rv.data
+    	assert "[]" in rv.data
 
     def test_helpers_find_spots(self):
     	close_spots = helpers.find_spots(origin, potential_spots)
