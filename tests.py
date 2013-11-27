@@ -19,14 +19,14 @@ class TestCase(unittest.TestCase):
     def test_helpers_find_spots(self):
     	potential_spots = test_helper.example_response
     	origin = [0,0]
-    	close_spots = helpers.find_spots(origin,potential_spots)
+    	close_spots = helpers.find_spots(origin, potential_spots)
     	assert len(close_spots) == 1
 
     def test_helpers_filter_spots(self):
     	origin = [0,0]
     	all_spots = test_helper.example_response
     	max_distance = 0.5
-    	close_spots = helpers.filter_spots(origin,all_spots,max_distance)
+    	close_spots = helpers.filter_spots(origin, all_spots, max_distance)
     	assert len(close_spots) == 1
 
     def test_helpers_valid_spot(self):
@@ -41,6 +41,10 @@ class TestCase(unittest.TestCase):
     	assert helpers.valid_spot(invalid_spot, valid_distance, max_distance) == None
     	assert helpers.valid_spot(invalid_spot2, valid_distance, max_distance) == None
 
+    def test_helpers_get_distance(self):
+    	origin = [0,0]
+    	destination = [0,1]
+    	assert helpers.get_distance(origin, destination) == 69.132
 
 if __name__ == '__main__':
     unittest.main()
