@@ -26,7 +26,7 @@ class TestCase(unittest.TestCase):
     	origin = [0,0]
     	all_spots = test_helper.example_response
     	max_distance = 0.5
-    	close_spots = filter_spots
+    	close_spots = helpers.filter_spots(origin,all_spots,max_distance)
     	assert len(close_spots) == 1
 
 
