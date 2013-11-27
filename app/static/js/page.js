@@ -45,6 +45,10 @@ var Page = {
 		$('#modal').html("We can't seem to find any spots near you. Are you in San Francisco? <p><button type='button' id='no-sf' class='btn btn-default'>No, but show me Union Square!</button></p>")
 		$('#modal').addClass('show')
 	},
+	showNoGeo: function(){
+		$('#modal').html("<p>Please make sure your browser supports GPS location.</p>")
+		$('#modal').addClass('show')
+	}
 	hideModal: function(){
 		$('#modal').removeClass('show')
 	}

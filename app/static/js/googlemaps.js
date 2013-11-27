@@ -38,7 +38,7 @@ var GoogleMaps = {
       position: new google.maps.LatLng(60, 105),
     };
 
-    var infowindow = new google.maps.InfoWindow(options);
+    Page.showNoGeo()
     map.setCenter(options.position);
   },
   addMarkers: function(responseArray){
