@@ -46,6 +46,11 @@ class TestCase(unittest.TestCase):
     	destination = [0,1]
     	assert helpers.get_distance(origin, destination) == 69.17032342836163
 
+    def test_helpers_uniqify(self):
+    	array = [1,1,1,2,2,3,3,3,4,4,5,5]
+    	unique_array = []
+    	assert uniqify(array) == unique_array
+
 
 if __name__ == '__main__':
     unittest.main()

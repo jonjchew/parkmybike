@@ -3,5 +3,3 @@ example_response = json.loads("[ {\n  \"placement\" : \"SIDEWALK_RACK\",\n  \"ra
 valid_spot = json.loads("{\n\"spaces\" : \"1\",\"racks_installed\":\"1\"}")
 invalid_spot = json.loads("{\n\"spaces\" : \"0\",\"racks_installed\":\"1\"}")
 invalid_spot2 = json.loads("{\n\"spaces\" : \"1\",\"racks_installed\":\"0\"}")
-unsorted_array = [{'distance': 5},{'distance': 1},{'distance': 3}]
-sorted_array = [{'distance': 1},{'distance': 3},{'distance': 5}]
