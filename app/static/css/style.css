@@ -34,7 +34,7 @@ img.phone {
 	font-size: 25px;
 }
 #modal {
-	display: none;
+	opacity: 0;
 	position: fixed;
 	width: 400px;
 	height: 200px;
@@ -47,9 +47,12 @@ img.phone {
 	text-align: center;
 	font-size: 30px;
 	padding: 15px;
+	transition: .4s ease-in-out;
+   -moz-transition: .4s ease-in-out;
+   -webkit-transition: .4s ease-in-out;
 }
 #modal.show {
-	display: block;
+	opacity: 1;
 }
 #load-img {
 	margin: 0 auto;
