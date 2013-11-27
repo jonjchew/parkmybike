@@ -18,6 +18,12 @@ class TestCase(unittest.TestCase):
         rv = self.app.get('/')
         assert "<div id='map-canvas'>" in rv.data
 
+    def test_post_index(self):
+    	rv = self.app.post('/', data = dict(
+	        
+    		))
+    	assert "results" in rv.data
+
     def test_helpers_find_spots(self):
     	close_spots = helpers.find_spots(origin, potential_spots)
     	assert len(close_spots) == 1
