@@ -3,3 +3,4 @@ example_response = json.loads("[ {\n  \"placement\" : \"SIDEWALK_RACK\",\n  \"ra
 valid_spot = json.loads("{\n\"spaces\" : \"1\",\"racks_installed\":\"1\"}")
 invalid_spot = json.loads("{\n\"spaces\" : \"0\",\"racks_installed\":\"1\"}")
 invalid_spot2 = json.loads("{\n\"spaces\" : \"1\",\"racks_installed\":\"0\"}")
+unsorted_array = [{'num': 3, 'distance': 5},{'num': 1, 'distance': 1},{'num': 2, 'distance': 3}]
