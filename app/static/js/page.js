@@ -5,8 +5,8 @@ var Page = {
 	bindSearch: function(){
 		$( "#find" ).on( "click", function() {
 			var data = {
-				latitude: GoogleMaps.origin.ob,
-				longitude: GoogleMaps.origin.pb
+				latitude: GoogleMaps.origin.pb,
+				longitude: GoogleMaps.origin.qb
 			}
   			Page.showLoad()
   			$.post('/', data, function(response){
