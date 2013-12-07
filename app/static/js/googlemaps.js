@@ -52,7 +52,7 @@ var GoogleMaps = {
         var marker = new google.maps.Marker({
           position: pos,
           map: map,
-          title: responseArray[i][2],
+          title: responseArray[i]['name'],
           icon: '/static/images/bike-icon.png',
           zIndex: 200
         })
